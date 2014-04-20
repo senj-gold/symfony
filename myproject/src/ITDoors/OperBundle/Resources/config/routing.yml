@@ -1,3 +1,19 @@
-it_doors_oper_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: ITDoorsOperBundle:Default:index }
+#it_doors_oper_homepage:
+#    pattern:  /crud/{name}
+#    defaults: { _controller: ITDoorsOperBundle:Default:index }
+#    
+crud_cread:
+    pattern:      /crud/cread/
+    defaults:     { _controller: ITDoorsOperBundle:Crud:cread }
+    
+crud_read:
+    pattern:      /crud/read/
+    defaults:     { _controller: ITDoorsOperBundle:Crud:read }
+    
+crud_update:
+    pattern:      /crud/update/{id}
+    defaults:     { _controller: ITDoorsOperBundle:Crud:update }
+    
+crud_delete:
+    pattern:      /crud/delete/{id}
+    defaults:     { _controller: ITDoorsOperBundle:Crud:delete }
