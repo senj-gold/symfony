@@ -16,6 +16,12 @@ class CrudController
     }
      public function creadAction()
     {
+//         $name = 'sdf';
+//          return $this->render(
+//                'ITDoors:OperBundle:crud:cread.twig.html',
+//                array('name' => $name)
+//         );
+          
         return new Response('<html><body>Создаем '.'!</body></html>');
     }
      public function readAction()
