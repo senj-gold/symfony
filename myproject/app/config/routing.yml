@@ -1,0 +1,3 @@
+ITDoorsOperBundle:
+    resource: "@ITDoorsOperBundle/Resources/config/routing.yml"
+    prefix:   /
