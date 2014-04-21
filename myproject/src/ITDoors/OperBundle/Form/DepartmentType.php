@@ -15,10 +15,10 @@ class DepartmentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('mpk')
-            ->add('name')
+            ->add('mpk', 'text', array('label' => 'Поле MPK'))
+            ->add('name','text',array('label'=> 'Название'))
             ->add('squery')
-            ->add('address')
+            ->add('address','text',array('label'=> 'Адресс'))
             ->add('created_at')
             ->add('description')
             ->add('coordinates')
