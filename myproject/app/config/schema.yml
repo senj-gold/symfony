@@ -1,0 +1,23 @@
+# config/schema.yml
+propel:
+  city:
+    id:           ~
+    name:         { type: varchar(255), required: true }
+ 
+organization:
+  city:
+    id:           ~
+    name:         { type: varchar(255), required: true }
+ 
+  department:
+    id:           ~
+    city_id:  { type: integer, foreignTable: city, foreignReference: id, required: true }
+    organization_id:  { type: integer, foreignTable: organization, foreignReference: id, required: true }
+    mpk:         { type: varchar(255) }
+    name:         { type: varchar(255) }
+    squery:      { type: float(4)}
+    address:         { type: varchar(255) }
+    created_at:   ~
+    description:          { type: text }
+    coordinates:     { type: varchar(255) }
+ 

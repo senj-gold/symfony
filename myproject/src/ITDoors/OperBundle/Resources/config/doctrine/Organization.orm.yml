@@ -1,0 +1,15 @@
+# src/ITDoors/OperBundle/Resources/config/doctrine/Organization.orm.yml
+ITDoors\OperBundle\Entity\Organization:
+    type: entity
+    table: organization
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            length: 255
+        contact:
+            type: string
+            length: 255

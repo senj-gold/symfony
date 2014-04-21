@@ -1,0 +1,12 @@
+# src/ITDoors/OperBundle/Resources/config/doctrine/City.orm.yml
+ITDoors\OperBundle\Entity\City:
+    type: entity
+    table: city
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            length: 255

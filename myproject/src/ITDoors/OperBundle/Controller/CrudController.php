@@ -12,6 +12,8 @@ class CrudController  extends Controller
 {
      public function indexAction($name)
     {
+        
+    
 //          return $this->render(
 //        'OperBundl:Crud:index.twig.'.$_format,
 //        array('name' => $name)
@@ -20,8 +22,18 @@ class CrudController  extends Controller
     }
      public function creadAction()
     {
+         if(isset($_POST['cread'])){
+    $product = new Department();
+    $product->setName('Лайф');
+    $product->setContact('Возле офиса лайф ))');
 
-        return new Response('<html><body>Создаем '.  '!</body></html>');
+    $em = $this->getDoctrine()->getEntityManager();
+    $em->persist($product);
+    $em->flush();
+    return new Response('Created product name '.$product->getName());
+         }
+
+    
     }
      public function readAction()
     {
@@ -29,7 +41,7 @@ class CrudController  extends Controller
         $posts = $em->getRepository('ITDoorsOperBundle:Department')->findAll();
         var_dump($posts);
         
-        return new Response('<html><body>Получаем запси !</body></html>');
+        return new Response('<html><body>Получаем записи!</body></html>');
     }
      public function updateAction($id)
     {

@@ -1,0 +1,34 @@
+# src/ITDoors/OperBundle/Resources/config/doctrine/Department.orm.yml
+ITDoors\OperBundle\Entity\Department:
+    type: entity
+    table: department
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        mpk:
+            type: string
+            length: 255
+        name:
+            type: string
+            length: 255
+        squery:
+            type: float
+            length: 4
+        address:
+            type: string
+            length: 255
+        created_at:
+            type: date
+        description:
+            type: text
+        coordinates:
+            type: string
+            length: 255
+        organization_id:
+            type: integer
+            length: 4
+        city_id:
+            type: integer
+            length: 4
