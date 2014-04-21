@@ -22,9 +22,19 @@ class DepartmentType extends AbstractType
             ->add('created_at')
             ->add('description')
             ->add('coordinates')
-            ->add('organization_id')
-            ->add('city_id')
-        ;
+            ->add('organization_id', 'entity', array(
+                      'class'    => 'ITDoorsOperBundle:Organization',
+                      'property' => 'name',
+                      'expanded' => false,
+                      'multiple' => false, 
+                      'label'  => 'Организация'))
+            ->add('city_id', 'entity', array(
+                      'class'    => 'ITDoorsOperBundle:City',
+                      'property' => 'name',
+                      'expanded' => false,
+                      'multiple' => false, 
+                      'label'  => 'Город'))
+                      ;
     }
     
     /**

@@ -5,37 +5,37 @@ namespace ITDoors\OperBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use ITDoors\OperBundle\Entity\Department;
-use ITDoors\OperBundle\Form\DepartmentType;
+use ITDoors\OperBundle\Entity\Organization;
+use ITDoors\OperBundle\Form\OrganizationType;
 
 /**
- * Department controller.
+ * Organization controller.
  *
  */
-class DepartmentController extends Controller
+class OrganizationController extends Controller
 {
 
     /**
-     * Lists all Department entities.
+     * Lists all Organization entities.
      *
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('ITDoorsOperBundle:Department')->findAll();
+        $entities = $em->getRepository('ITDoorsOperBundle:Organization')->findAll();
 
-        return $this->render('ITDoorsOperBundle:Department:index.html.twig', array(
+        return $this->render('ITDoorsOperBundle:Organization:index.html.twig', array(
             'entities' => $entities,
         ));
     }
     /**
-     * Creates a new Department entity.
+     * Creates a new Organization entity.
      *
      */
     public function createAction(Request $request)
     {
-        $entity = new Department();
+        $entity = new Organization();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -44,26 +44,26 @@ class DepartmentController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('department_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('organization_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('ITDoorsOperBundle:Department:new.html.twig', array(
+        return $this->render('ITDoorsOperBundle:Organization:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-    * Creates a form to create a Department entity.
+    * Creates a form to create a Organization entity.
     *
-    * @param Department $entity The entity
+    * @param Organization $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(Department $entity)
+    private function createCreateForm(Organization $entity)
     {
-        $form = $this->createForm(new DepartmentType(), $entity, array(
-            'action' => $this->generateUrl('department_create'),
+        $form = $this->createForm(new OrganizationType(), $entity, array(
+            'action' => $this->generateUrl('organization_create'),
             'method' => 'POST',
         ));
 
@@ -73,59 +73,59 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Displays a form to create a new Department entity.
+     * Displays a form to create a new Organization entity.
      *
      */
     public function newAction()
     {
-        $entity = new Department();
+        $entity = new Organization();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('ITDoorsOperBundle:Department:new.html.twig', array(
+        return $this->render('ITDoorsOperBundle:Organization:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Finds and displays a Department entity.
+     * Finds and displays a Organization entity.
      *
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ITDoorsOperBundle:Department')->find($id);
+        $entity = $em->getRepository('ITDoorsOperBundle:Organization')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Department entity.');
+            throw $this->createNotFoundException('Unable to find Organization entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('ITDoorsOperBundle:Department:show.html.twig', array(
+        return $this->render('ITDoorsOperBundle:Organization:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
 
     /**
-     * Displays a form to edit an existing Department entity.
+     * Displays a form to edit an existing Organization entity.
      *
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ITDoorsOperBundle:Department')->find($id);
+        $entity = $em->getRepository('ITDoorsOperBundle:Organization')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Department entity.');
+            throw $this->createNotFoundException('Unable to find Organization entity.');
         }
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('ITDoorsOperBundle:Department:edit.html.twig', array(
+        return $this->render('ITDoorsOperBundle:Organization:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -133,16 +133,16 @@ class DepartmentController extends Controller
     }
 
     /**
-    * Creates a form to edit a Department entity.
+    * Creates a form to edit a Organization entity.
     *
-    * @param Department $entity The entity
+    * @param Organization $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Department $entity)
+    private function createEditForm(Organization $entity)
     {
-        $form = $this->createForm(new DepartmentType(), $entity, array(
-            'action' => $this->generateUrl('department_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new OrganizationType(), $entity, array(
+            'action' => $this->generateUrl('organization_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -151,17 +151,17 @@ class DepartmentController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Department entity.
+     * Edits an existing Organization entity.
      *
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ITDoorsOperBundle:Department')->find($id);
+        $entity = $em->getRepository('ITDoorsOperBundle:Organization')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Department entity.');
+            throw $this->createNotFoundException('Unable to find Organization entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -171,17 +171,17 @@ class DepartmentController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('department_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('organization_edit', array('id' => $id)));
         }
 
-        return $this->render('ITDoorsOperBundle:Department:edit.html.twig', array(
+        return $this->render('ITDoorsOperBundle:Organization:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
     /**
-     * Deletes a Department entity.
+     * Deletes a Organization entity.
      *
      */
     public function deleteAction(Request $request, $id)
@@ -191,21 +191,21 @@ class DepartmentController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('ITDoorsOperBundle:Department')->find($id);
+            $entity = $em->getRepository('ITDoorsOperBundle:Organization')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Department entity.');
+                throw $this->createNotFoundException('Unable to find Organization entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('department'));
+        return $this->redirect($this->generateUrl('organization'));
     }
 
     /**
-     * Creates a form to delete a Department entity by id.
+     * Creates a form to delete a Organization entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -214,7 +214,7 @@ class DepartmentController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('department_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('organization_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

@@ -1,0 +1,30 @@
+department:
+    pattern:  /
+    defaults: { _controller: "ITDoorsOperBundle:Department:index" }
+
+department_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ITDoorsOperBundle:Department:show" }
+
+department_new:
+    pattern:  /new
+    defaults: { _controller: "ITDoorsOperBundle:Department:new" }
+
+department_create:
+    pattern:  /create
+    defaults: { _controller: "ITDoorsOperBundle:Department:create" }
+    requirements: { _method: post }
+
+department_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ITDoorsOperBundle:Department:edit" }
+
+department_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ITDoorsOperBundle:Department:update" }
+    requirements: { _method: post|put }
+
+department_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ITDoorsOperBundle:Department:delete" }
+    requirements: { _method: post|delete }

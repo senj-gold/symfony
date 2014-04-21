@@ -1,75 +1,111 @@
 <?php
+
 namespace ITDoors\OperBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
-*
-* @ORM\Entity
- * @ORM\Table(name="department")
-*/
+ * Department
+ *
+ * @ORM\Table(name="department", indexes={@ORM\Index(name="city_id", columns={"city_id"}), @ORM\Index(name="organization_id", columns={"organization_id"})})
+ * @ORM\Entity
+ */
 class Department
 {
-    /*
-     * @var integer $id
+    /**
+     * @var integer
      *
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\Column(name="id", type="integer")
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    protected $id;
+    private $id;
 
-    /*
-     * @ORM\ManyToOne(targetEntity="City", inversedBy="posts")
-     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mpk", type="string", length=255, nullable=false)
      */
-    protected $city_id;
-    /*
-     * @ORM\ManyToOne(targetEntity="Organization", inversedBy="posts")
-     * @ORM\JoinColumn(name="organization_id", referencedColumnName="id")
-     */
-    protected $organization_id;
+    private $mpk;
 
-    /*
-     * @var string $mpk
-     * @ORM\Column(name="mpk", type="string", length=20)
-     */
-    protected $mpk;
-    
     /**
-     * @var string $name
-     * @ORM\Column(name="name", type="string", length=20)
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
      */
-    protected $name;
-    
+    private $name;
+
     /**
-     * @var float $squery
-     * @ORM\Column(name="squery", type="float", length=4)
+     * @var float
+     *
+     * @ORM\Column(name="squery", type="float", precision=10, scale=0, nullable=false)
      */
-    protected $squery;
-    
+    private $squery;
+
     /**
-     * @var string $address
-     * @ORM\Column(name="address", type="string", length=255)
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string", length=255, nullable=false)
      */
-    protected $address;
-    
+    private $address;
+
     /**
-     * @var string $created_at
-     * @ORM\Column(name="created_at", type="date")
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="date", nullable=false)
      */
-    protected $created_at;
-    
+    private $createdAt;
+
     /**
-     * @var string $description
-     * @ORM\Column(name="description", type="text")
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=false)
      */
-    protected $description;
+    private $description;
+
     /**
-     * @var string $coordinates
-     * @ORM\Column(name="coordinates", type="string", length=255)
+     * @var string
+     *
+     * @ORM\Column(name="coordinates", type="string", length=255, nullable=false)
      */
-    protected $coordinates;
+    private $coordinates;
+
+    /**
+     * @var \City
+     *
+     * @ORM\ManyToOne(targetEntity="City")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="city_id", referencedColumnName="id")
+     * })
+     */
+    private $city;
+
+    /**
+     * @var \Organization
+     *
+     * @ORM\ManyToOne(targetEntity="Organization")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="organization_id", referencedColumnName="id")
+     * })
+     */
+    private $organization;
+
+
+    /**
+     * @var \DateTime
+     */
+    private $created_at;
+
+    /**
+     * @var integer
+     */
+    private $organization_id;
+
+    /**
+     * @var integer
+     */
+    private $city_id;
+
 
     /**
      * Get id

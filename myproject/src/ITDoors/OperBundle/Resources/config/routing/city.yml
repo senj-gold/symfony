@@ -1,0 +1,30 @@
+city:
+    pattern:  /
+    defaults: { _controller: "ITDoorsOperBundle:City:index" }
+
+city_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ITDoorsOperBundle:City:show" }
+
+city_new:
+    pattern:  /new
+    defaults: { _controller: "ITDoorsOperBundle:City:new" }
+
+city_create:
+    pattern:  /create
+    defaults: { _controller: "ITDoorsOperBundle:City:create" }
+    requirements: { _method: post }
+
+city_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ITDoorsOperBundle:City:edit" }
+
+city_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ITDoorsOperBundle:City:update" }
+    requirements: { _method: post|put }
+
+city_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ITDoorsOperBundle:City:delete" }
+    requirements: { _method: post|delete }

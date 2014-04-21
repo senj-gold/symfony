@@ -5,25 +5,30 @@ namespace ITDoors\OperBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
-*
-* @ORM\Entity
-*/
+ * City
+ *
+ * @ORM\Table(name="city")
+ * @ORM\Entity
+ */
 class City
 {
     /**
-     * @var integer $id
+     * @var integer
      *
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
     /**
-     * @var string $name
-     * @ORM\Column(name="name", type="string", length=255)
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
      */
-    public $name;
- 
+    private $name;
+
+
 
     /**
      * Get id
@@ -56,5 +61,10 @@ class City
     public function getName()
     {
         return $this->name;
+    }
+    
+    function __toString()
+    {
+        return (string)$this->getId();
     }
 }

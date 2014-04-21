@@ -5,37 +5,37 @@ namespace ITDoors\OperBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use ITDoors\OperBundle\Entity\Department;
-use ITDoors\OperBundle\Form\DepartmentType;
+use ITDoors\OperBundle\Entity\City;
+use ITDoors\OperBundle\Form\CityType;
 
 /**
- * Department controller.
+ * City controller.
  *
  */
-class DepartmentController extends Controller
+class CityController extends Controller
 {
 
     /**
-     * Lists all Department entities.
+     * Lists all City entities.
      *
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('ITDoorsOperBundle:Department')->findAll();
+        $entities = $em->getRepository('ITDoorsOperBundle:City')->findAll();
 
-        return $this->render('ITDoorsOperBundle:Department:index.html.twig', array(
+        return $this->render('ITDoorsOperBundle:City:index.html.twig', array(
             'entities' => $entities,
         ));
     }
     /**
-     * Creates a new Department entity.
+     * Creates a new City entity.
      *
      */
     public function createAction(Request $request)
     {
-        $entity = new Department();
+        $entity = new City();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -44,26 +44,26 @@ class DepartmentController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('department_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('city_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('ITDoorsOperBundle:Department:new.html.twig', array(
+        return $this->render('ITDoorsOperBundle:City:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-    * Creates a form to create a Department entity.
+    * Creates a form to create a City entity.
     *
-    * @param Department $entity The entity
+    * @param City $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(Department $entity)
+    private function createCreateForm(City $entity)
     {
-        $form = $this->createForm(new DepartmentType(), $entity, array(
-            'action' => $this->generateUrl('department_create'),
+        $form = $this->createForm(new CityType(), $entity, array(
+            'action' => $this->generateUrl('city_create'),
             'method' => 'POST',
         ));
 
@@ -73,59 +73,59 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Displays a form to create a new Department entity.
+     * Displays a form to create a new City entity.
      *
      */
     public function newAction()
     {
-        $entity = new Department();
+        $entity = new City();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('ITDoorsOperBundle:Department:new.html.twig', array(
+        return $this->render('ITDoorsOperBundle:City:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Finds and displays a Department entity.
+     * Finds and displays a City entity.
      *
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ITDoorsOperBundle:Department')->find($id);
+        $entity = $em->getRepository('ITDoorsOperBundle:City')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Department entity.');
+            throw $this->createNotFoundException('Unable to find City entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('ITDoorsOperBundle:Department:show.html.twig', array(
+        return $this->render('ITDoorsOperBundle:City:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
 
     /**
-     * Displays a form to edit an existing Department entity.
+     * Displays a form to edit an existing City entity.
      *
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ITDoorsOperBundle:Department')->find($id);
+        $entity = $em->getRepository('ITDoorsOperBundle:City')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Department entity.');
+            throw $this->createNotFoundException('Unable to find City entity.');
         }
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('ITDoorsOperBundle:Department:edit.html.twig', array(
+        return $this->render('ITDoorsOperBundle:City:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -133,16 +133,16 @@ class DepartmentController extends Controller
     }
 
     /**
-    * Creates a form to edit a Department entity.
+    * Creates a form to edit a City entity.
     *
-    * @param Department $entity The entity
+    * @param City $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Department $entity)
+    private function createEditForm(City $entity)
     {
-        $form = $this->createForm(new DepartmentType(), $entity, array(
-            'action' => $this->generateUrl('department_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new CityType(), $entity, array(
+            'action' => $this->generateUrl('city_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -151,17 +151,17 @@ class DepartmentController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Department entity.
+     * Edits an existing City entity.
      *
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ITDoorsOperBundle:Department')->find($id);
+        $entity = $em->getRepository('ITDoorsOperBundle:City')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Department entity.');
+            throw $this->createNotFoundException('Unable to find City entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -171,17 +171,17 @@ class DepartmentController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('department_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('city_edit', array('id' => $id)));
         }
 
-        return $this->render('ITDoorsOperBundle:Department:edit.html.twig', array(
+        return $this->render('ITDoorsOperBundle:City:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
     /**
-     * Deletes a Department entity.
+     * Deletes a City entity.
      *
      */
     public function deleteAction(Request $request, $id)
@@ -191,21 +191,21 @@ class DepartmentController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('ITDoorsOperBundle:Department')->find($id);
+            $entity = $em->getRepository('ITDoorsOperBundle:City')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Department entity.');
+                throw $this->createNotFoundException('Unable to find City entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('department'));
+        return $this->redirect($this->generateUrl('city'));
     }
 
     /**
-     * Creates a form to delete a Department entity by id.
+     * Creates a form to delete a City entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -214,7 +214,7 @@ class DepartmentController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('department_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('city_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

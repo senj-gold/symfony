@@ -5,32 +5,37 @@ namespace ITDoors\OperBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
-*
-* @ORM\Entity
-*/
+ * Organization
+ *
+ * @ORM\Table(name="organization")
+ * @ORM\Entity
+ */
 class Organization
 {
     /**
-     * @var integer $id
+     * @var integer
      *
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-    
+
     /**
-     * @var string $name
-     * @ORM\Column(name="name", type="string", length=255)
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
      */
-    public $name;
- 
+    private $name;
+
     /**
-     * @var string $contact
-     * @ORM\Column(name="contact", type="string", length=255)
+     * @var string
+     *
+     * @ORM\Column(name="contact", type="string", length=255, nullable=false)
      */
-    public $contact;
- 
+    private $contact;
+
+
 
     /**
      * Get id
@@ -87,4 +92,9 @@ class Organization
     {
         return $this->contact;
     }
+    function __toString()
+    {
+        return (string)$this->getId();
+    }
+    
 }

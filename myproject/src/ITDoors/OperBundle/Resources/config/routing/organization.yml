@@ -1,0 +1,30 @@
+organization:
+    pattern:  /
+    defaults: { _controller: "ITDoorsOperBundle:Organization:index" }
+
+organization_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ITDoorsOperBundle:Organization:show" }
+
+organization_new:
+    pattern:  /new
+    defaults: { _controller: "ITDoorsOperBundle:Organization:new" }
+
+organization_create:
+    pattern:  /create
+    defaults: { _controller: "ITDoorsOperBundle:Organization:create" }
+    requirements: { _method: post }
+
+organization_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ITDoorsOperBundle:Organization:edit" }
+
+organization_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ITDoorsOperBundle:Organization:update" }
+    requirements: { _method: post|put }
+
+organization_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ITDoorsOperBundle:Organization:delete" }
+    requirements: { _method: post|delete }

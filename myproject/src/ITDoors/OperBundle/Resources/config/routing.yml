@@ -1,38 +1,11 @@
-it_doors_oper_homepage:
-    pattern:  /department/
-    defaults: { _controller: ITDoorsOperBundle:Department:index }
-
-department:
-    pattern:      /department/index/
-    defaults:     { _controller: ITDoorsOperBundle:Department:index }
-
-department_create:
-    pattern:      /department/create/
-    defaults:     { _controller: ITDoorsOperBundle:Department:create }
-    
-department_new:
-    pattern:      /department/new/
-    defaults:     { _controller: ITDoorsOperBundle:Department:new }
-    
-department_show:
-    pattern:      /department/show/{id}
-    defaults:     { _controller: ITDoorsOperBundle:Department:show, id:0}
-    requirements:
-        id:  \d+
-    
-department_edit:
-    pattern:      /department/edit/{id}
-    defaults:     { _controller: ITDoorsOperBundle:Department:edit, id:0}
-    requirements:
-        id:  \d+
+ITDoorsOperBundle_department:
+        resource: "@ITDoorsOperBundle/Resources/config/routing/department.yml"
+        prefix:   /department
         
-department_update:
-    pattern:      /department/update/{id}
-    defaults:     { _controller: ITDoorsOperBundle:Department:update, id:0}
-    requirements:
-        id:  \d+
-department_delete:
-    pattern:      /department/delete/{id}
-    defaults:     { _controller: ITDoorsOperBundle:Department:delete, id:0}
-    requirements:
-        id:  \d+
+ITDoorsOperBundle_city:
+        resource: "@ITDoorsOperBundle/Resources/config/routing/city.yml"
+        prefix:   /city
+
+ITDoorsOperBundle_organization:
+        resource: "@ITDoorsOperBundle/Resources/config/routing/organization.yml"
+        prefix:   /organization
