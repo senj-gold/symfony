@@ -1,23 +1,38 @@
-#it_doors_oper_homepage:
-#    pattern:  /crud/{name}
-#    defaults: { _controller: ITDoorsOperBundle:Default:index }
-#    
-crud_cread:
-    pattern:      /crud/cread/
-    defaults:     { _controller: ITDoorsOperBundle:Crud:cread }
+it_doors_oper_homepage:
+    pattern:  /department/
+    defaults: { _controller: ITDoorsOperBundle:Department:index }
+
+department:
+    pattern:      /department/index/
+    defaults:     { _controller: ITDoorsOperBundle:Department:index }
+
+department_create:
+    pattern:      /department/create/
+    defaults:     { _controller: ITDoorsOperBundle:Department:create }
     
-crud_read:
-    pattern:      /crud/read/
-    defaults:     { _controller: ITDoorsOperBundle:Crud:read }
+department_new:
+    pattern:      /department/new/
+    defaults:     { _controller: ITDoorsOperBundle:Department:new }
     
-crud_update:
-    pattern:      /crud/update/{id}
-    defaults:     { _controller: ITDoorsOperBundle:Crud:update, id:0}
+department_show:
+    pattern:      /department/show/{id}
+    defaults:     { _controller: ITDoorsOperBundle:Department:show, id:0}
     requirements:
         id:  \d+
     
-crud_delete:
-    pattern:      /crud/delete/{id}
-    defaults:     { _controller: ITDoorsOperBundle:Crud:delete, id:0}
+department_edit:
+    pattern:      /department/edit/{id}
+    defaults:     { _controller: ITDoorsOperBundle:Department:edit, id:0}
+    requirements:
+        id:  \d+
+        
+department_update:
+    pattern:      /department/update/{id}
+    defaults:     { _controller: ITDoorsOperBundle:Department:update, id:0}
+    requirements:
+        id:  \d+
+department_delete:
+    pattern:      /department/delete/{id}
+    defaults:     { _controller: ITDoorsOperBundle:Department:delete, id:0}
     requirements:
         id:  \d+
